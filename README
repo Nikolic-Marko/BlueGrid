@@ -4,15 +4,15 @@ This project is a simple Express.js server that fetches data from an external AP
 
 ## Features
 
-- Fetches data from an external API and caches it
-- Refreshes the cache every 30 minutes
-- Provides a quick response to API requests by serving cached data
-- Waits for the cache to be populated before responding to requests if the cache is not ready
+-   Fetches data from an external API and caches it
+-   Refreshes the cache every 30 minutes
+-   Provides a quick response to API requests by serving cached data
+-   Waits for the cache to be populated before responding to requests if the cache is not ready
 
 ## Requirements
 
-- Node.js (>= 12.x)
-- npm (>= 6.x)
+-   Node.js (>= 12.x)
+-   npm (>= 6.x)
 
 ## Getting Started
 
@@ -20,7 +20,7 @@ This project is a simple Express.js server that fetches data from an external AP
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/express-server.git
+    git clone https://github.com/Nikolic-Marko/BlueGrid.git
     ```
 2. Navigate to the project directory:
     ```bash
@@ -38,5 +38,7 @@ No additional configuration is required. You can modify the `TEST_API_URL` in `a
 ### Running the Server
 
 To start the server, use the following command:
+
 ```bash
 npm start
+```

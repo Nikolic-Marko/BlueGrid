@@ -4,9 +4,9 @@
     "description": "An Express.js server with caching and periodic data refresh",
     "main": "index.js",
     "scripts": {
-        "start": "ts-node index.ts",
+        "start": "ts-node src/index.ts",
         "build": "tsc",
-        "debug": "nodemon --inspect index.ts"
+        "debug": "nodemon --inspect src/index.ts"
     },
     "dependencies": {
         "axios": "^0.21.1",
