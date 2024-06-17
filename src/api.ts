@@ -6,12 +6,6 @@ interface ApiResponse {
 
 const TEST_API_URL = "https://rest-test-eight.vercel.app/api/test";
 
-/**
- * Checks if the given segment has a valid lowercase extension.
- *
- * @param segment - The last segment of the URL path
- * @returns True if the segment has a lowercase extension, false otherwise
- */
 const hasLowerCaseExtension = (segment: string): boolean => {
     const parts = segment.split(".");
     if (parts.length < 2) return false;
@@ -20,23 +14,12 @@ const hasLowerCaseExtension = (segment: string): boolean => {
     return extension === extension.toLowerCase();
 };
 
-/**
- * Validates the URL path segments to check for valid files and extensions.
- *
- * @param pathSegments - Array of path segments from the URL
- * @returns True if the URL is valid, false otherwise
- */
 const isValidUrl = (pathSegments: string[]): boolean => {
     const lastSegment = pathSegments[pathSegments.length - 1];
     return lastSegment.includes(".") && hasLowerCaseExtension(lastSegment) && !pathSegments.includes("RECYCLE.BIN");
 };
 
-/**
- * Fetches data from the API and transforms it into a structured format.
- *
- * @returns A structured object based on the fetched URLs
- */
-export const fetchDataAndTransform = async (): Promise<any> => {
+export const fetchDataAndTransform = async (): Promise<Record<string, any[]>> => {
     try {
         const response = await axios.get<ApiResponse>(TEST_API_URL);
         const urls = response.data.items;
@@ -76,7 +59,7 @@ export const fetchDataAndTransform = async (): Promise<any> => {
 
         return result;
     } catch (error) {
-        console.error("Error fetching data", error);
+        console.error("Error fetching data from API:", error);
         throw new Error("Error fetching data");
     }
 };

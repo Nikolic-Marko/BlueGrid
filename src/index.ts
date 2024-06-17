@@ -5,15 +5,15 @@ import cache from "./cache";
 const app = express();
 const PORT = process.env.PORT || 3000;
 const CACHE_KEY = "transformedData";
-const CACHE_TTL = 30 * 60 * 1000; // 30 minutes in milliseconds
+const CACHE_TTL = 30 * 60 * 1000;
 
 let cacheReady = false;
 
 // Function to populate the cache
-const populateCache = async () => {
+const populateCache = async (): Promise<void> => {
     try {
         const data = await fetchDataAndTransform();
-        cache.set(CACHE_KEY, data, CACHE_TTL / 1000); // TTL in seconds
+        cache.set(CACHE_KEY, data, CACHE_TTL / 1000);
         cacheReady = true;
         console.log("Cache populated");
     } catch (error) {
@@ -21,10 +21,8 @@ const populateCache = async () => {
     }
 };
 
-// Populate cache when the app starts
 populateCache();
 
-// Set interval to repopulate cache every 30 minutes
 setInterval(populateCache, CACHE_TTL);
 
 app.get("/api/files", async (req, res) => {
@@ -32,7 +30,6 @@ app.get("/api/files", async (req, res) => {
         const data = cache.get(CACHE_KEY);
         res.json(data);
     } else {
-        // Wait until cache is populated
         try {
             await new Promise<void>((resolve) => {
                 const checkCacheReady = setInterval(() => {
@@ -40,7 +37,7 @@ app.get("/api/files", async (req, res) => {
                         clearInterval(checkCacheReady);
                         resolve();
                     }
-                }, 100); // Check every 100ms
+                }, 100); 
             });
             const data = cache.get(CACHE_KEY);
             res.json(data);
