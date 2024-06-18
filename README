@@ -24,7 +24,7 @@ This project is a simple Express.js server that fetches data from an external AP
     ```
 2. Navigate to the project directory:
     ```bash
-    cd express-server
+    cd BlueGrid
     ```
 3. Install the dependencies:
     ```bash
