@@ -1,13 +1,15 @@
-import express from "express";
 import { fetchDataAndTransform } from "./api";
 import Cache from "./cache";
+import { Request, Response } from "express";
+
+const express = require("express");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const CACHE_CONFIG = {
-    defaultTtl: 30 * 60, // 30 minutes in seconds
-    checkPeriod: 120, // 2 minutes in seconds
+    defaultTtl: 30 * 60, 
+    checkPeriod: 120, 
 };
 
 const cache = new Cache(CACHE_CONFIG);
@@ -36,7 +38,7 @@ const initializeCache = () => {
 
 initializeCache();
 
-app.get("/api/files", async (req, res) => {
+app.get("/api/files", async (req: Request, res: Response) => {
     try {
         const data = await cache.withCache(CACHE_KEYS.files, fetchDataAndTransform, FILES_TTL);
         res.json(data);

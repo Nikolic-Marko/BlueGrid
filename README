@@ -42,3 +42,11 @@ To start the server, use the following command:
 ```bash
 npm start
 ```
+
+### Testing the code
+
+To test the code, use the following command:
+
+```bash
+npm test
+```
