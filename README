@@ -50,3 +50,9 @@ To test the code, use the following command:
 ```bash
 npm test
 ```
+
+## Test via Postman
+
+To test endpoint use Postman with curl
+
+curl --location 'http://localhost:3000/api/files'
