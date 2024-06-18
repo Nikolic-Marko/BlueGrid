@@ -11,8 +11,8 @@ This project is a simple Express.js server that fetches data from an external AP
 
 ## Requirements
 
--   Node.js (>= 12.x)
--   npm (>= 6.x)
+-   Node.js (>= 19.x)
+-   npm (>= 9.x)
 
 ## Getting Started
 
