@@ -2,7 +2,7 @@
     "name": "Bluegrid-Express-Server",
     "version": "1.0.0",
     "description": "An Express.js server with caching and periodic data refresh",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "start": "ts-node src/index.ts",
         "build": "tsc",
